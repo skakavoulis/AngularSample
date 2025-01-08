@@ -1,0 +1,22 @@
+<header class="header">
+  <nav class="nav-menu">
+    <div class="logo">
+      <a href="/">My App</a>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
+        >
+      </li>
+      <li><a routerLink="/route1" routerLinkActive="active">Route 1</a></li>
+      <li><a routerLink="/route2/id_1" routerLinkActive="active">Route 2, id 1</a></li>
+      <li><a routerLink="/route2/id_2" routerLinkActive="active">Route 2, id 2</a></li>
+      <li><a routerLink="/route3" routerLinkActive="active">Route 3</a></li>
+      <li><a routerLink="/route4" routerLinkActive="active">Route 4</a></li>
+    </ul>
+  </nav>
+</header>
