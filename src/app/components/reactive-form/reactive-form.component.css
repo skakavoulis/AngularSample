@@ -6,7 +6,6 @@
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
   padding: 1rem;
 }
 
@@ -46,4 +45,10 @@ select.form-control {
 
 .form-group.has-error {
   border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 0.25rem;
 }

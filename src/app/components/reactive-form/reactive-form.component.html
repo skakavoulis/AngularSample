@@ -30,13 +30,7 @@
       />
     </div>
 
-    <div
-      class="form-check"
-      [class.has-error]="
-        form.get('moreThanTwoYearsExperience')?.invalid &&
-        form.get('moreThanTwoYearsExperience')?.touched
-      "
-    >
+    <div class="form-group">
       <input
         type="checkbox"
         id="moreThanTwoYearsExperience"
@@ -47,6 +41,50 @@
         More than 2 years experience
       </label>
     </div>
+
+    @if (form.get('moreThanTwoYearsExperience')?.value) {
+    <div
+      class="form-group"
+      [class.has-error]="
+        form.get('yearsOfExperience')?.invalid &&
+        form.get('yearsOfExperience')?.touched
+      "
+    >
+      <label for="yearsOfExperience">Years of Experience</label>
+      <input
+        type="number"
+        id="yearsOfExperience"
+        formControlName="yearsOfExperience"
+        class="form-control"
+      />
+      <div
+        *ngIf="form.get('yearsOfExperience')?.errors?.['min']"
+        class="error-message"
+      >
+        Must be at least 2 years
+      </div>
+      <div
+        *ngIf="form.get('yearsOfExperience')?.errors?.['max']"
+        class="error-message"
+      >
+        Must be less than 50 years
+      </div>
+    </div>
+    <div
+      class="form-group"
+      [class.has-error]="
+        form.get('companyName')?.invalid && form.get('companyName')?.touched
+      "
+    >
+      <label for="companyName">Current/Last Company</label>
+      <input
+        type="text"
+        id="companyName"
+        formControlName="companyName"
+        class="form-control"
+      />
+    </div>
+    }
 
     <div
       class="form-group"

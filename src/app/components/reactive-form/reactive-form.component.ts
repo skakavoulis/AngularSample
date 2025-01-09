@@ -39,9 +39,28 @@ export class ReactiveFormComponent implements OnInit {
         ],
       ],
       lastName: ['', Validators.required],
-      moreThanTwoYearsExperience: [true],
+      moreThanTwoYearsExperience: [false],
+      yearsOfExperience: [''],
+      companyName: [''],
       preferredLanguage: ['', Validators.required],
       favoriteLanguage: ['', Validators.required],
+    });
+
+    this.form.get('moreThanTwoYearsExperience')?.valueChanges.subscribe(hasExperience => {
+      if (hasExperience) {
+        this.form.get('yearsOfExperience')?.setValidators([
+          Validators.required,
+          Validators.min(2),
+          Validators.max(50)
+        ]);
+        this.form.get('companyName')?.setValidators([Validators.required]);
+      } else {
+        this.form.get('yearsOfExperience')?.clearValidators();
+        this.form.get('companyName')?.clearValidators();
+      }
+
+      this.form.get('yearsOfExperience')?.updateValueAndValidity();
+      this.form.get('companyName')?.updateValueAndValidity();
     });
   }
 
