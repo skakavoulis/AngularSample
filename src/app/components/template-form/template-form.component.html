@@ -1,0 +1,110 @@
+<div class="container mt-4">
+  <form #templateForm="ngForm" (ngSubmit)="onSubmit(templateForm)" class="mb-4">
+    <div
+      class="form-group"
+      [class.has-error]="firstName.invalid && firstName.dirty"
+    >
+      <label for="firstName">First Name</label>
+      <input
+        #firstName="ngModel"
+        id="firstName"
+        type="text"
+        name="firstName"
+        class="form-control"
+        ngModel
+        required
+        minlength="3"
+        maxlength="10"
+        pattern="^code.*"
+      />
+    </div>
+
+    <div
+      class="form-group"
+      [class.has-error]="lastName.invalid && lastName.dirty"
+    >
+      <label for="lastName">Last Name</label>
+      <input
+        #lastName="ngModel"
+        type="text"
+        id="lastName"
+        name="lastName"
+        class="form-control"
+        ngModel
+        required
+      />
+    </div>
+
+    <div
+      class="form-check"
+      [class.has-error]="
+        moreThanTwoYearsExperience.invalid && moreThanTwoYearsExperience.dirty
+      "
+    >
+      <input
+        #moreThanTwoYearsExperience="ngModel"
+        type="checkbox"
+        id="moreThanTwoYearsExperience"
+        name="moreThanTwoYearsExperience"
+        class="form-check-input"
+        [(ngModel)]="model.moreThanTwoYearsExperience"
+      />
+      <label class="form-check-label" for="experience">
+        More than 2 years experience</label
+      >
+    </div>
+
+    <div
+      class="form-group"
+      [class.has-error]="preferredLanguage.invalid && preferredLanguage.dirty"
+    >
+      <label>Preferred Language:</label>
+      <div class="form-check">
+        <input
+          #preferredLanguage="ngModel"
+          type="radio"
+          id="typescript"
+          name="preferredLanguage"
+          value="typescript"
+          class="form-check-input"
+          ngModel
+        />
+        <label class="form-check-label" for="typescript">TypeScript</label>
+      </div>
+      <div class="form-check">
+        <input
+          #preferredLanguage="ngModel"
+          type="radio"
+          id="javascript"
+          name="preferredLanguage"
+          value="javascript"
+          class="form-check-input"
+          ngModel
+        />
+        <label class="form-check-label" for="javascript">JavaScript</label>
+      </div>
+    </div>
+
+    <div
+      class="form-group"
+      [class.has-error]="favoriteLanguage.invalid && favoriteLanguage.dirty"
+    >
+      <label for="favoriteLanguage">Favourite Language</label>
+      <select
+        #favoriteLanguage="ngModel"
+        id="favoriteLanguage"
+        name="favoriteLanguage"
+        class="form-control"
+        ngModel
+      >
+        <option value="">Select a language</option>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="csharp">C#</option>
+        <option value="cpp">C++</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
