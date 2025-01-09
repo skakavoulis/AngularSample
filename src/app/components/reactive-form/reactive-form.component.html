@@ -1,0 +1,104 @@
+<div class="container mt-4">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mb-4">
+    <div
+      class="form-group"
+      [class.has-error]="
+        form.get('firstName')?.invalid && form.get('firstName')?.touched
+      "
+    >
+      <label for="firstName">First Name</label>
+      <input
+        id="firstName"
+        type="text"
+        formControlName="firstName"
+        class="form-control"
+      />
+    </div>
+
+    <div
+      class="form-group"
+      [class.has-error]="
+        form.get('lastName')?.invalid && form.get('lastName')?.touched
+      "
+    >
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        id="lastName"
+        formControlName="lastName"
+        class="form-control"
+      />
+    </div>
+
+    <div
+      class="form-check"
+      [class.has-error]="
+        form.get('moreThanTwoYearsExperience')?.invalid &&
+        form.get('moreThanTwoYearsExperience')?.touched
+      "
+    >
+      <input
+        type="checkbox"
+        id="moreThanTwoYearsExperience"
+        formControlName="moreThanTwoYearsExperience"
+        class="form-check-input"
+      />
+      <label class="form-check-label" for="experience">
+        More than 2 years experience
+      </label>
+    </div>
+
+    <div
+      class="form-group"
+      [class.has-error]="
+        form.get('preferredLanguage')?.invalid &&
+        form.get('preferredLanguage')?.touched
+      "
+    >
+      <label>Preferred Language:</label>
+      <div class="form-check">
+        <input
+          type="radio"
+          id="typescript"
+          formControlName="preferredLanguage"
+          value="typescript"
+          class="form-check-input"
+        />
+        <label class="form-check-label" for="typescript">TypeScript</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="radio"
+          id="javascript"
+          formControlName="preferredLanguage"
+          value="javascript"
+          class="form-check-input"
+        />
+        <label class="form-check-label" for="javascript">JavaScript</label>
+      </div>
+    </div>
+
+    <div
+      class="form-group"
+      [class.has-error]="
+        form.get('favoriteLanguage')?.invalid &&
+        form.get('favoriteLanguage')?.touched
+      "
+    >
+      <label for="favoriteLanguage">Favourite Language</label>
+      <select
+        id="favoriteLanguage"
+        formControlName="favoriteLanguage"
+        class="form-control"
+      >
+        <option value="">Select a language</option>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="csharp">C#</option>
+        <option value="cpp">C++</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
