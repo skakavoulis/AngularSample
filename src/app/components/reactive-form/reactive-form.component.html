@@ -137,6 +137,58 @@
       </select>
     </div>
 
+    <div class="form-group">
+      <label>Skills</label>
+      <div formArrayName="skills">
+        <div
+          *ngFor="let skill of skills.controls; let i = index"
+          [formGroupName]="i"
+          class="skill-group"
+        >
+          <div class="skill-inputs">
+            <div class="form-group">
+              <label [for]="'skillName' + i">Skill Name</label>
+              <input
+                [id]="'skillName' + i"
+                type="text"
+                formControlName="name"
+                class="form-control"
+                placeholder="Enter skill name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label [for]="'skillYears' + i">Years of Experience</label>
+              <input
+                [id]="'skillYears' + i"
+                type="number"
+                formControlName="yearsExperience"
+                class="form-control"
+                placeholder="Years of experience"
+              />
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-danger remove-skill"
+              (click)="removeSkill(i)"
+              *ngIf="skills.length > 1"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-secondary add-skill"
+        (click)="addSkill()"
+      >
+        Add Skill
+      </button>
+    </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

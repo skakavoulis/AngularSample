@@ -52,3 +52,55 @@ select.form-control {
   font-size: 0.8em;
   margin-top: 0.25rem;
 }
+
+.skill-group {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.skill-inputs {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.skill-inputs .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.remove-skill {
+  margin-top: 1.85rem;
+}
+
+.add-skill {
+  margin-top: 1rem;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}

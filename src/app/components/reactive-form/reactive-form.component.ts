@@ -4,6 +4,7 @@ import {
   FormGroup,
   Validators,
   ReactiveFormsModule,
+  FormArray,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -44,24 +45,53 @@ export class ReactiveFormComponent implements OnInit {
       companyName: [''],
       preferredLanguage: ['', Validators.required],
       favoriteLanguage: ['', Validators.required],
+      skills: this.fb.array([]),
     });
 
-    this.form.get('moreThanTwoYearsExperience')?.valueChanges.subscribe(hasExperience => {
-      if (hasExperience) {
-        this.form.get('yearsOfExperience')?.setValidators([
-          Validators.required,
-          Validators.min(2),
-          Validators.max(50)
-        ]);
-        this.form.get('companyName')?.setValidators([Validators.required]);
-      } else {
-        this.form.get('yearsOfExperience')?.clearValidators();
-        this.form.get('companyName')?.clearValidators();
-      }
+    this.form
+      .get('moreThanTwoYearsExperience')
+      ?.valueChanges.subscribe((hasExperience) => {
+        if (hasExperience) {
+          this.form
+            .get('yearsOfExperience')
+            ?.setValidators([
+              Validators.required,
+              Validators.min(2),
+              Validators.max(50),
+            ]);
+          this.form.get('companyName')?.setValidators([Validators.required]);
+        } else {
+          this.form.get('yearsOfExperience')?.clearValidators();
+          this.form.get('companyName')?.clearValidators();
+        }
 
-      this.form.get('yearsOfExperience')?.updateValueAndValidity();
-      this.form.get('companyName')?.updateValueAndValidity();
+        this.form.get('yearsOfExperience')?.updateValueAndValidity();
+        this.form.get('companyName')?.updateValueAndValidity();
+      });
+
+    this.addSkill();
+  }
+
+  get skills() {
+    return this.form.get('skills') as FormArray;
+  }
+
+  createSkillFormGroup() {
+    return this.fb.group({
+      name: ['', Validators.required],
+      yearsExperience: [
+        '',
+        [Validators.required, Validators.min(0), Validators.max(50)],
+      ],
     });
+  }
+
+  addSkill() {
+    this.skills.push(this.createSkillFormGroup());
+  }
+
+  removeSkill(index: number) {
+    this.skills.removeAt(index);
   }
 
   onSubmit() {
