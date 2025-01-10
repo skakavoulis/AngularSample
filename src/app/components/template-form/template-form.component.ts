@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 
 interface FormData {
   firstName: string;
@@ -13,7 +13,7 @@ interface FormData {
 @Component({
   selector: 'app-template-form',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, JsonPipe],
   templateUrl: './template-form.component.html',
   styleUrl: './template-form.component.css',
 })
@@ -36,5 +36,11 @@ export class TemplateFormComponent {
     } else {
       console.log('Form is invalid');
     }
+  }
+
+  onModelChange(value: string) {
+    let newValue = value.charAt(0).toUpperCase();
+    newValue += value.slice(1).toLowerCase();
+    this.model.firstName = newValue;
   }
 }
