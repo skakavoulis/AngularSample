@@ -20,4 +20,10 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display the home component', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('p')).toBeTruthy();
+    expect(compiled.querySelector('p').textContent).toContain('home works!');
+  });
 });

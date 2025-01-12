@@ -1,10 +1,20 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { ActivatedRoute } from '@angular/router';
 
 describe('AppComponent', () => {
+  let mockActivatedRoute: jasmine.SpyObj<ActivatedRoute>;
+
   beforeEach(async () => {
+    mockActivatedRoute = jasmine.createSpyObj('ActivatedRoute', [], {
+      snapshot: {
+        paramMap: new Map(),
+      },
+    });
+
     await TestBed.configureTestingModule({
       imports: [AppComponent],
+      providers: [{ provide: ActivatedRoute, useValue: mockActivatedRoute }],
     }).compileComponents();
   });
 
@@ -20,10 +30,13 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Angular-sample');
   });
 
-  it('should render title', () => {
+  it('should show a header, main section, and footer component', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, Angular-sample');
+
+    expect(compiled.querySelector('app-header')).not.toBeNull();
+    expect(compiled.querySelector('app-main-section')).not.toBeNull();
+    expect(compiled.querySelector('app-footer')).not.toBeNull();
   });
 });
