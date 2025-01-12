@@ -4,6 +4,7 @@ import { RouteStandaloneComponentComponent } from './components/route-standalone
 import { HomeComponent } from './home/home.component';
 import { authGuard } from './guards/auth.guard';
 import { canMatchGuard } from './guards/can-match.guard';
+import { canDeactivateGuard } from './guards/can-deactivate.guard';
 
 export const routes: Routes = [
   {
@@ -14,6 +15,7 @@ export const routes: Routes = [
     path: 'route1',
     component: RouteComponent,
     canActivate: [authGuard],
+    canDeactivate: [canDeactivateGuard],
   },
   {
     path: 'route2/:id',
