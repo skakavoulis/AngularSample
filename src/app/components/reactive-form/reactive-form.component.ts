@@ -105,4 +105,8 @@ export class ReactiveFormComponent implements OnInit {
       console.log('Form is invalid');
     }
   }
+
+  getControlError(controlName: string, validationName: string) {
+    return this.form.get(controlName)?.errors?.[validationName];
+  }
 }

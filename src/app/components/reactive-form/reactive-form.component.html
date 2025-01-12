@@ -13,6 +13,9 @@
         formControlName="firstName"
         class="form-control"
       />
+      <div *ngIf="getControlError('firstName', 'required')">
+        Field is required
+      </div>
     </div>
 
     <div
