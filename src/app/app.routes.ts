@@ -2,6 +2,9 @@ import { Routes } from '@angular/router';
 import { RouteComponent } from './routes-module/route-component/route-component';
 import { RouteStandaloneComponentComponent } from './components/route-standalone-component/route-standalone-component.component';
 import { HomeComponent } from './home/home.component';
+import { authGuard } from './guards/auth.guard';
+import { canMatchGuard } from './guards/can-match.guard';
+import { canDeactivateGuard } from './guards/can-deactivate.guard';
 
 export const routes: Routes = [
   {
@@ -11,6 +14,8 @@ export const routes: Routes = [
   {
     path: 'route1',
     component: RouteComponent,
+    canActivate: [authGuard],
+    canDeactivate: [canDeactivateGuard],
   },
   {
     path: 'route2/:id',
@@ -18,6 +23,7 @@ export const routes: Routes = [
   },
   {
     path: 'route3',
+    canMatch: [canMatchGuard],
     loadComponent: () =>
       import(
         './components/route-standalone-2/route-standalone-2.component'

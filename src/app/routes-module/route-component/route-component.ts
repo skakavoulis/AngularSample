@@ -4,8 +4,10 @@ import { Component } from '@angular/core';
   selector: 'app-route-component',
   imports: [],
   templateUrl: './route-component.html',
-  styleUrl: './route-component.css'
+  styleUrl: './route-component.css',
 })
 export class RouteComponent {
-
+  canDeactivate() {
+    return false;
+  }
 }
