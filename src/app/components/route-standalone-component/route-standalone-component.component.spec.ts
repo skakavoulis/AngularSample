@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RouteStandaloneComponentComponent } from './route-standalone-component.component';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('RouteStandaloneComponentComponent', () => {
   let component: RouteStandaloneComponentComponent;
@@ -13,6 +14,7 @@ describe('RouteStandaloneComponentComponent', () => {
       snapshot: {
         params: { id: '123' },
       },
+      params: of({ id: '123' }),
     });
 
     await TestBed.configureTestingModule({

@@ -16,6 +16,13 @@ export const routes: Routes = [
     component: RouteComponent,
     canActivate: [authGuard],
     canDeactivate: [canDeactivateGuard],
+    pathMatch: 'prefix',
+    children: [
+      {
+        path: 'child',
+        component: RouteComponent,
+      },
+    ],
   },
   {
     path: 'route2/:id',
