@@ -1,1 +1,28 @@
-<p>home works!</p>
+<div class="container mt-4">
+  <h2 class="mb-4">Today's Appointments</h2>
+
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let appointment of todayAppointments">
+      <div class="card appointment-card shadow-sm hover-shadow">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">{{appointment.patientName}}</h5>
+          <h6 class="card-subtitle mb-3">{{appointment.time}}</h6>
+          <div class="appointment-type">
+            <i class="fas fa-stethoscope me-2"></i>{{appointment.type}}
+          </div>
+          <div>
+            <span [class]="'badge ' + appointment.statusClass">
+              {{appointment.status}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="#" class="show-more-btn" (click)="loadMore($event)">
+      Show More Appointments
+    </a>
+  </div>
+</div>
